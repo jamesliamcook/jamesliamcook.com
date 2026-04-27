@@ -86,7 +86,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-links a:hover { color: var(--black); background: var(--off); }
-.nav-links a.active { color: var(--black); }
+.nav-links a.active { color: var(--black); font-weight: 600; border-left: 3px solid var(--accent); padding-left: calc(1.4rem - 3px); }
 
 .nav-toggle {
   display: none;
@@ -350,7 +350,7 @@ a { color: inherit; text-decoration: none; }
 
 .clip-row {
   display: grid;
-  grid-template-columns: 90px 1fr 72px;
+  grid-template-columns: 110px 1fr 72px;
   gap: 1.5rem;
   align-items: start;
   padding: 1.4rem 0.5rem;
@@ -376,10 +376,28 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2px;
 }
 
-.pub-telegraph { color: #1a3a6b; }
-.pub-bi        { color: #b30000; }
+.clip-pub svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.pub-logo-img {
+  display: block;
+  height: 14px;
+  width: auto;
+  max-width: 110px;
+  filter: grayscale(100%) brightness(0);
+}
+
+/* Logo colours via currentColor */
+.pub-telegraph { color: #0a0a0a; }
+.pub-bi        { color: #005eb8; }
 .pub-lzn       { color: #2a6b2a; }
 
 .clip-title {
@@ -565,6 +583,167 @@ a { color: inherit; text-decoration: none; }
 
 .footer-links a:hover { color: var(--black); }
 
+
+
+/* ============================================================
+   ARTICLE CARD GRID
+   Activated after fetch_images.py runs — replaces the list
+   ============================================================ */
+
+/* When images are present, switch the list container to a grid */
+.clips-list--visual {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+  border: 1.5px solid var(--black);
+  margin-bottom: 0;
+}
+
+/* Each card */
+.clip-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  text-decoration: none;
+  overflow: hidden;
+  transition: background 0.15s;
+  position: relative;
+}
+
+.clip-card:hover { background: var(--off); }
+
+/* Full-bleed image, 16:9 */
+.clip-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 1.5px solid var(--border);
+  transition: opacity 0.2s;
+}
+
+.clip-card:hover .clip-thumb { opacity: 0.9; }
+
+/* Fallback placeholder when no image */
+.clip-thumb-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--off);
+  border-bottom: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+/* Card body */
+.clip-card-body {
+  padding: 1rem 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.5rem;
+}
+
+/* Top meta row: pub logo + date */
+.clip-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.clip-card-meta .clip-pub {
+  font-size: 0.6rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.clip-card-meta .clip-pub svg {
+  height: 12px;
+  width: auto;
+}
+
+.clip-card-date {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  color: var(--mid);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Headline */
+.clip-card-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--black);
+  flex: 1;
+}
+
+/* Description */
+.clip-card-desc {
+  font-size: 0.78rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--mid);
+}
+
+/* Read link */
+.clip-card-read {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.clip-card:hover .clip-card-read { color: var(--black); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .clips-list--visual { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .clips-list--visual { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   SCROLL-IN ANIMATION
+   ============================================================ */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============================================================
+   MOBILE NAV — ACTIVE STATE
+   ============================================================ */
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -581,6 +760,7 @@ a { color: inherit; text-decoration: none; }
   }
   .nav-links li { border-left: none; border-top: 1px solid var(--border); }
   .nav-links a { padding: 0.9rem var(--pad); height: auto; line-height: 1.5; }
+  .nav-links a.active { border-left: 3px solid var(--accent); padding-left: calc(var(--pad) - 3px); }
   .nav-toggle { display: flex; align-items: center; }
 
   .home-nav-strip { grid-template-columns: 1fr; }
