@@ -722,3 +722,61 @@ figure.fig.rec.rec-stack .tr-body{max-height:none}
 .audio h2::before,.media-h::before{display:none}
 .lm-anc{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 1px 3px rgba(40,20,10,.4);display:none;pointer-events:none}
 .lm-lead{position:absolute;transform-origin:0 50%;background:var(--blue);display:none;pointer-events:none;opacity:.85}
+/* Green Shadows and Jungle Rain: book quotations */
+blockquote.bq-book{margin:28px 0;padding:4px 0 4px 26px;border-left:3px solid var(--rule-strong,#c9bfae);font-size:.97em}
+blockquote.bq-book p{margin:0 0 .8em}
+blockquote.bq-book .bq-src{font-size:.82em;letter-spacing:.02em;color:var(--muted,#6b6157);margin-top:.6em}
+blockquote.bq-book mark{background:#f6e7a8;padding:0 2px}
+.tr-list{margin:.4em 0 .8em 1.4em;padding:0}.tr-list li{margin:.15em 0}
+/* gallery of the battle papers */
+.gsjr-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px;margin:26px 0 36px}
+.gsjr-gal figure.fig{margin:0}
+.gsjr-gal figure.fig img{width:100%;height:220px;object-fit:cover;object-position:top;border:1px solid var(--rule)}
+.gsjr-gal figcaption{font-size:.8em;line-height:1.4}
+/* animated battle plan */
+figure.ba{margin:40px 0;background:#fbf8f2;border:1px solid var(--rule);padding:18px 18px 14px}
+.ba-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.ba-k{font-size:.78em;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#6b6157)}
+.ba-time{font-family:var(--serif,inherit);font-size:1.35em;color:#8a1c2c}
+.ba-view{position:relative;aspect-ratio:16/10;overflow:hidden;background:#efe9de;border:1px solid var(--rule)}
+.ba-sketch,.ba-map{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.ba-sketch.on,.ba-map.on{opacity:1}
+.ba-sketch img{position:absolute;left:0;top:0;width:100%;height:auto;transform:translateY(-62%)}
+.ba-sketch.pan img{animation:baPan 8s ease-in-out forwards}
+@keyframes baPan{from{transform:translateY(-62%)}to{transform:translateY(-8%)}}
+.ba-cam{position:absolute;left:0;top:0;width:100%;transform-origin:0 0;transition:transform 1.4s cubic-bezier(.45,0,.25,1)}
+.ba-cam img{display:block;width:100%;height:auto}
+.ba-svg{position:absolute;inset:0;width:100%;height:100%}
+.ba-l{opacity:0;transition:opacity .6s ease}.ba-l.on{opacity:1}
+.ba-rt{fill:none;stroke:#b3122e;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.ba-sw{fill:none;stroke:#c23b7a;stroke-width:5;stroke-dasharray:10 8;stroke-linecap:round}
+.ba-l.ba-rt,.ba-l.ba-sw{opacity:.92}
+.ba-tag rect{fill:#fff;stroke:#8a1c2c;stroke-width:1.5;opacity:.92}.ba-tag text{font:600 15px system-ui,sans-serif;fill:#3a2a22;text-anchor:middle}
+.ba-jp{fill:#2c3a6b;fill-opacity:.25;stroke:#2c3a6b;stroke-width:2;animation:baPulse 1.8s ease-in-out infinite}
+@keyframes baPulse{50%{fill-opacity:.55}}
+.ba-sh{fill:#f2a23a;fill-opacity:.0;stroke:#e0701e;stroke-width:3;animation:baBoom 1.4s ease-out infinite}
+@keyframes baBoom{0%{transform:scale(.2);fill-opacity:.8;opacity:1}100%{transform:scale(1.4);fill-opacity:0;opacity:0}}
+.ba-sh,.ba-bl,.ba-fl{transform-box:fill-box;transform-origin:center}
+.ba-tk circle{fill:#4a5a2a;stroke:#fff;stroke-width:2.5;opacity:0;transition:transform 2.2s ease,opacity .5s}
+.ba-mg{stroke:#ff9d2e;stroke-width:4;stroke-dasharray:6 10;animation:baMg .5s linear infinite}
+@keyframes baMg{to{stroke-dashoffset:-32}}
+.ba-fl{fill:#ffcf5a;animation:baFlash .5s ease-in-out infinite alternate}
+@keyframes baFlash{from{opacity:.3}to{opacity:1}}
+.ba-vl{fill:#3fd16b;stroke:#fff;stroke-width:2;animation:baRise 2.4s ease-out infinite}
+@keyframes baRise{0%{transform:translateY(40px);opacity:0}25%{opacity:1}100%{transform:translateY(-70px);opacity:0}}
+.ba-ca{fill:none;stroke:#2c3a6b;stroke-width:4;stroke-dasharray:8 8;animation:baMg 1s linear infinite}
+.ba-bl{fill:#ffb347;stroke:#e0451e;stroke-width:4;animation:baBoom 1.2s ease-out infinite}
+.ba-cap{min-height:4.4em;margin:12px 0 8px;font-size:1em;line-height:1.5}
+.ba-ctl{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ba-ctl button{font:inherit;font-size:.9em;border:1px solid var(--rule);background:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;color:inherit}
+.ba-ctl button:hover{border-color:#8a1c2c}
+.ba-dots{display:flex;gap:6px;margin-left:8px;flex-wrap:wrap}
+.ba-dots .ba-dot{width:12px;height:12px;padding:0;border-radius:50%;background:#e2dacd;border:0}
+.ba-dots .ba-dot.done{background:#c79aa2}.ba-dots .ba-dot.on{background:#8a1c2c}
+figure.ba figcaption{margin-top:12px}
+@media (max-width:700px){figure.ba{padding:12px}.ba-view{aspect-ratio:4/3}.ba-tag text{font-size:20px}}
+@media (prefers-reduced-motion:reduce){.ba-cam,.ba-tk circle{transition:none}.ba-jp,.ba-sh,.ba-mg,.ba-fl,.ba-vl,.ba-ca,.ba-bl{animation:none}.ba-sh,.ba-bl{opacity:.6}}
+.gsjr-gal figure.fig{width:auto!important;max-width:none!important;margin:0!important;float:none!important;grid-column:auto!important;justify-self:stretch}
+.gsjr-gal figure.fig .open{display:block;width:100%}
+.gsjr-gal figure.fig img{width:100%!important;height:200px!important;max-height:none!important;aspect-ratio:auto!important}
+.gsjr-gal figcaption{text-align:left!important;max-width:none!important;padding:0!important;margin-top:8px!important}
