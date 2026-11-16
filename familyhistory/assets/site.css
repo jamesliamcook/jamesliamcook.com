@@ -720,3 +720,5 @@ figure.fig.rec.rec-stack .tr-body{max-height:none}
 @media (max-width:860px){.audio{grid-template-columns:1fr;gap:12px}}
 .audio h2{font-size:clamp(24px,2.6vw,32px);margin:0!important;padding:0!important;border:0!important}
 .audio h2::before,.media-h::before{display:none}
+.lm-anc{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 1px 3px rgba(40,20,10,.4);display:none;pointer-events:none}
+.lm-lead{position:absolute;transform-origin:0 50%;background:var(--blue);display:none;pointer-events:none;opacity:.85}
